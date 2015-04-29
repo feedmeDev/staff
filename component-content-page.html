@@ -1,0 +1,109 @@
+<div id="pageContainer">
+
+
+<h1 class="headerText">Components</h1>
+
+
+
+<div id="popupstyle"> 
+
+<!-- Popup Div Starts Here -->
+<div id="popupForm">
+
+
+
+		<div ng-controller="Create_Component as component_creator">
+		
+			<form name="addComponentForm" ng-submit="component_creator.create_component()">
+			<img id="close" src="exit.png" onclick ="div_hide_add()">
+
+					<h2>Add component</h2>
+					<hr>
+					Desired Name:
+					<input id="textField" type="text" placeholder="Name" name="name" ng-model="component_creator.name"required />
+
+					Desired Description
+					<textarea id="textArea" placeholder="Description" name="description" ng-model="component_creator.description" required></textarea>
+					
+					<input id="submit" type="submit" value="Add component" />
+					
+			</form>
+		
+		</div>	
+		
+</div>
+
+<!-- Popup Div Ends Here -->
+</div>
+
+<!-- Display Popup Button ---------------------------------------------->
+
+
+
+<button id="popup" onclick="div_show_add()">Add component</button>
+
+
+<div ng-controller="View_Components as componentView">
+	<button ng-click="componentView.view_components()">View Components</button>
+	<table class="center">
+	<tr>
+	<th>ID</th>
+	<th>Name</th>
+	<th>Description</th>
+	<th>Created at</th>
+	<th>Updated at</th>
+	<th>Update</th>
+	<th>Delete</th>
+	</tr>
+
+<tr  ng-repeat="component in componentView.components">
+			<td>{{component.id}}</td>
+			<td>{{component.name}}</td>
+			<td>{{component.description}}</td>
+			<td>{{component.created_at}}</td>
+			<td>{{component.updated_at}}</td>
+			<td><img src="pencil.jpg" class="buttonHover" onclick="div_show_add()" /></td>
+			<td ng-controller="Delete_Component_CTRL as componentDelete" ><img src="newBin.png" class="buttonHover" ng-click="componentDelete.DeleteComponent(component)"  /></td>
+
+</tr>
+
+</table>	
+
+
+<!--
+
+ <div id="popupstyle">
+ <div id="popupForm">
+
+				<div ng-controller="Update_component_CTRL as component">
+					<form name="updatecomponentForm" ng-submit="component.UpdatecomponentT()">
+					<img id="close" src="exit.png" onclick ="div_hide_update()">
+			
+					<h2>Update component</h2>
+					<hr>
+						<input type="text" ng-model="component.data.id" placeholder="component Id" required></input><br />
+						<input type="text" ng-model="component.data.name" placeholder="component Name" value="{{person.name}}" required></input> <br />
+						<input type="text" ng-model="component.data.username" placeholder="component Username" value="{{person.username}}" required></input><br />
+						<input type="text" ng-model="component.data.password" placeholder="component Password" required></input><br />
+						<input type="text" ng-model="component.data.password_confirmation" placeholder="component password_confirmation" required></input><br />		
+						<input id="submit" type="submit" value="Update component" />
+					</form>
+				</div>
+
+
+
+			<button id="popup" onclick="div_show_update()">Update Icon</button>
+
+
+	
+
+</div>
+</div>
+
+-->
+	
+</div>
+
+
+
+</div>
